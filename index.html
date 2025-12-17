@@ -1001,7 +1001,8 @@
     </style>
 </head>
 <body>
-    
+     <div id="loading-screen" style="text-align: center; padding-top: 50vh;">Verificando sesión...</div>
+    <div class="container">
     <div id="main-app-content">
 
         <div id="app-content">
@@ -1024,9 +1025,9 @@
                     <button class="btn btn-primary" onclick="enviarEmailAyuda()" style="width: 100%;">
                         📧 Ayuda
                     </button>
-                    <button class="btn btn-secondary" onclick="window.location.reload();" style="width: 100%;">
-                        🔄 Recargar App
-                    </button>
+                      <button class="btn btn-secondary" id="logoutButton">
+                🚪 Salir
+            </button>
                 </div>
             </div>
         </div>
