@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Presupuestos de Cortinas</title>
-   
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+    
+    <script src="firebase-config.js"></script> 
+    
     <style>
         * {
             margin: 0;
@@ -2561,6 +2566,26 @@
             mostrarVista('gestion');
             filtrarPresupuestos();
         }
+
+            // 1. Lógica de Protección (Debe ejecutarse después de la carga de auth)
+        auth.onAuthStateChanged((user) => {
+            document.getElementById('loading-screen').style.display = 'none';
+
+            if (user) {
+                // Usuario logueado: Mostrar dashboard
+                document.getElementById('main-app-content').style.display = 'block';
+            } else {
+                // Usuario NO logueado: Redirigir a login.html
+                console.log("No hay usuario. Redirigiendo a login.html");
+                window.location.href = "login.html"; 
+            }
+        });
+        
+        // 2. Lógica de Cierre de Sesión
+        document.getElementById('logoutButton').addEventListener('click', () => {
+            auth.signOut(); 
+        });
+        
     </script>
 </body>
 </html>
